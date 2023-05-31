@@ -133,6 +133,10 @@
   <ItemGroup>
     <ClCompile Include="GuessingGame.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GetEnv.h" />
+    <ClInclude Include="Random.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
