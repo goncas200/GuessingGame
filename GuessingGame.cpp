@@ -62,7 +62,7 @@ start_loop:
 			getline(cin, s_guess);
 			for (char i : s_guess) {
 				if (i != '1' and i != '2' and i != '3' and i != '4' and i != '5' and i != '6' and i != '7' and i != '8' and i != '9' and i != '0') {
-					cout << "It must be an integer\n";
+					cout << "It must be an integer\n\n";
 					goto start_loop;
 				}
 			}
