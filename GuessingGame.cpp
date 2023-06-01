@@ -12,12 +12,12 @@ int main() {
 	current_path(appdata);
 	bool new_dir = true;
 	try {
-		current_path("GuessingGameScores");
+		current_path("GuessingGameScores2");
 		new_dir = false;
 	}
 	catch (...) {
-		system("mkdir GuessingGameScores");
-		current_path("GuessingGameScores");
+		system("mkdir GuessingGameScores2");
+		current_path("GuessingGameScores2");
 	}
 	
 	int score = 0;
@@ -49,16 +49,24 @@ int main() {
 	}
 
 	cout << "Welcome to the game " << name << "\n\n";
-
+start_loop:
 	while (true) {
 		string want_continue;
 		cout << "Score: " << score << "\n";
+		string s_guess;
 		int guess;
 		int num = random.getnum(101);
 		bool win = false;
 		for (int i = 0; i < 5; ++i) {
 			cout << "Choose a number between 0 and 100: ";
-			cin >> guess;
+			getline(cin, s_guess);
+			for (char i : s_guess) {
+				if (i != '1' and i != '2' and i != '3' and i != '4' and i != '5' and i != '6' and i != '7' and i != '8' and i != '9' and i != '0') {
+					cout << "It must be an integer\n";
+					goto start_loop;
+				}
+			}
+			guess = stoi(s_guess);
 			if (num < guess) {
 				cout << "Too High!\n";
 			}
@@ -81,7 +89,7 @@ int main() {
 			cout << "You Lost!\n";
 		}
 		cout << "Do you want to continue? [Y/n]: ";
-		cin >> want_continue;
+		getline(cin, want_continue);
 		if (want_continue == "n" or want_continue == "N") {
 			return 0;
 		}
