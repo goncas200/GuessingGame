@@ -57,7 +57,7 @@ start_loop:
 		cout << "Score: " << score << "\n";
 		char c_guess[5];
 		int guess;
-		int num = random.getnum(100);
+		int num = random.getnum(99);
 		bool win = false;
 		for (int i = 0; i < 5; ++i) {
 			cout << "Choose a number between 0 and 99: ";
