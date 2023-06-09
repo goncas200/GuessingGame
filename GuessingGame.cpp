@@ -52,15 +52,22 @@ int main() {
 	cout << "Welcome to the game " << name << "\n\n";
 start_loop:
 	while (true) {
-		string want_continue;
+		bool first = true;
+		char want_continue[10];
 		cout << "Score: " << score << "\n";
-		string s_guess;
+		char c_guess[5];
 		int guess;
-		int num = random.getnum(101);
+		int num = random.getnum(100);
 		bool win = false;
 		for (int i = 0; i < 5; ++i) {
-			cout << "Choose a number between 0 and 100: ";
-			getline(cin, s_guess);
+			cout << "Choose a number between 0 and 99: ";
+			if (!first) {
+				int c;
+				while ((c = getchar()) != '\n' && c != EOF);
+			}
+			else first = false;
+			scanf_s("%5s", c_guess);
+			string s_guess = c_guess;
 			if (s_guess == "") goto start_loop;
 			for (char i : s_guess) {
 				if (i != '1' and i != '2' and i != '3' and i != '4' and i != '5' and i != '6' and i != '7' and i != '8' and i != '9' and i != '0') {
@@ -91,8 +98,11 @@ start_loop:
 			cout << "You Lost!\n";
 		}
 		cout << "Do you want to continue? [Y/n]: ";
-		getline(cin, want_continue);
-		if (want_continue == "n" or want_continue == "N") {
+		int c;
+		while ((c = getchar()) != '\n' && c != EOF);
+		fgets(want_continue, 4, stdin);
+		string s_want_continue = want_continue;
+		if (s_want_continue == "n\n" or s_want_continue == "N\n") {
 			return 0;
 		}
 	}
